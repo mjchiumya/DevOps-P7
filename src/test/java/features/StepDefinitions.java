@@ -97,6 +97,26 @@ public class StepDefinitions {
         }
     }
 
+    @Given("Danny selects dollars as currency")
+    public void danny_selects_dollars_as_the_withdraw_amount() {
+        // Write code here that turns the phrase above into concrete actions
+        danny.getAccountBalance("usd");
+
+    }
+    @When("Danny withdraws {int} dollars")
+    public void danny_withdraws_dollars(double withdrawAmount) {
+        // Write code here that turns the phrase above into concrete actions
+        double currentBalance = danny.getAccountBalance("usd");
+        double newBalance = currentBalance - withdrawAmount;
+        danny.setAccountBalance(newBalance);
+    }
 
 
+    @When("Danny topup {int} dollars")
+    public void dannyTopupDollars(int topUpAmount) {
+        double currentBalance = danny.getAccountBalance("usd");
+        double newBalance = currentBalance + topUpAmount;
+        danny.setAccountBalance(newBalance);
+
+    }
 }
