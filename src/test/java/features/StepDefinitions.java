@@ -1,12 +1,16 @@
 package features;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import revolut.PaymentService;
 import revolut.Person;
+
+import java.util.List;
 
 public class StepDefinitions {
 
@@ -15,11 +19,13 @@ public class StepDefinitions {
     PaymentService topUpMethod;
     Person danny;
 
+
     @Before//Before hooks run before the first step in each scenario
     public void setUp(){
         //We can use this to setup test data for each scenario
         danny = new Person("Danny");
     }
+
     @Given("Danny has {double} euro in his euro Revolut account")
     public void dannyHasEuroInHisEuroRevolutAccount(double startingBalance) {
         //System.out.println("Danny has starting account balance of: " + String.valueOf(startingBalance));
@@ -63,4 +69,33 @@ public class StepDefinitions {
         Assert.assertEquals(expectedResult, actualResult,0);
         System.out.println("The new final balance is: " + actualResult);
     }
+
+    @Given("Danny has a starting balance of")
+    public void danny_has_a_starting_balance_of(DataTable dataTable) {
+
+        List<Double>  startingBalanceList = dataTable.asList(Double.class);
+        for (double e: startingBalanceList){
+            System.out.println(e);
+        }
+
+        //throw new io.cucumber.java.PendingException();
+    }
+    @When("Danny now tops up by")
+    public void danny_now_tops_up_by(DataTable dataTable) {
+
+        List<Double> topUpAmount = dataTable.asList(Double.class);
+        for (double e: topUpAmount){
+            System.out.println(e);
+        }
+    }
+    @Then("The balance in his euro account should be")
+    public void the_balance_in_his_euro_account_should_be(DataTable dataTable) {
+
+        List<Double> newBalance = dataTable.asList(Double.class);
+        for (double e: newBalance){
+            System.out.println(e);
+        }
+    }
+
+
 }
