@@ -2,7 +2,6 @@ package features;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.Before;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -53,7 +52,7 @@ public class StepDefinitions {
     @When("Danny tops up")
     public void danny_tops_up() {
         // Write code here that turns the phrase above into concrete actions
-        danny.getAccount("EUR").addFunds(topUpAmount);
+        danny.getAccount("EUR").addFunds(topUpAmount, topUpMethod);
         //throw new io.cucumber.java.PendingException();
     }
 
@@ -70,32 +69,41 @@ public class StepDefinitions {
         System.out.println("The new final balance is: " + actualResult);
     }
 
+       // data table impl
     @Given("Danny has a starting balance of")
     public void danny_has_a_starting_balance_of(DataTable dataTable) {
-
+        //get starting balance values as list
         List<Double>  startingBalanceList = dataTable.asList(Double.class);
+        //loop starting balance list to display each balance for each scenario
         for (double e: startingBalanceList){
-            System.out.println(e);
+            System.out.println("starting balance of : " + e);
         }
-
-        //throw new io.cucumber.java.PendingException();
     }
+
     @When("Danny now tops up by")
     public void danny_now_tops_up_by(DataTable dataTable) {
-
+        //get top up amount values as list
         List<Double> topUpAmount = dataTable.asList(Double.class);
         for (double e: topUpAmount){
-            System.out.println(e);
+            System.out.println("Top up amount of : " +e);
         }
     }
+
+
     @Then("The balance in his euro account should be")
     public void the_balance_in_his_euro_account_should_be(DataTable dataTable) {
-
+        //get starting balance values as list
         List<Double> newBalance = dataTable.asList(Double.class);
         for (double e: newBalance){
-            System.out.println(e);
+            System.out.println("The new balance is :" + e);
         }
     }
 
+    //topup failure definition
+    @Then("Topup should not be successful")
+    public void topupShouldNotBeSuccessful() {
+     System.out.print("");
+
+    }
 
 }
