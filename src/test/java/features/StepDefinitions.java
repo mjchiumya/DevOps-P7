@@ -9,6 +9,7 @@ import org.junit.Assert;
 import revolut.PaymentService;
 import revolut.Person;
 
+import java.util.Currency;
 import java.util.List;
 
 public class StepDefinitions {
@@ -61,11 +62,10 @@ public class StepDefinitions {
         // Write code here that turns the phrase above into concrete actions
         //throw new io.cucumber.java.PendingException();
         //Arrange
-        double expectedResult = newBalance;
         //Act
-        double actualResult = danny.getAccount("EUR").getBalance();
+        double actualResult = danny.getAccount("EUR").getBalance("eur");
         //Assert
-        Assert.assertEquals(expectedResult, actualResult,0);
+        Assert.assertEquals(newBalance, actualResult,0);
         System.out.println("The new final balance is: " + actualResult);
     }
 
