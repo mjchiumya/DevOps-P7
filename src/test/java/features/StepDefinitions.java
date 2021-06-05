@@ -9,13 +9,11 @@ import org.junit.Assert;
 import revolut.PaymentService;
 import revolut.Person;
 
-import java.util.Currency;
 import java.util.List;
 
 public class StepDefinitions {
 
     private double topUpAmount;
-    //private String topUpMethod;
     PaymentService topUpMethod;
     Person danny;
 
@@ -54,7 +52,7 @@ public class StepDefinitions {
     public void danny_tops_up() {
         // Write code here that turns the phrase above into concrete actions
         danny.getAccount("EUR").addFunds(topUpAmount, topUpMethod);
-        //throw new io.cucumber.java.PendingException();
+
     }
 
     @Then("The new balance of his euro account should now be {double}")
@@ -99,11 +97,6 @@ public class StepDefinitions {
         }
     }
 
-    //topup failure definition
-    @Then("Topup should not be successful")
-    public void topupShouldNotBeSuccessful() {
-     System.out.print("");
 
-    }
 
 }

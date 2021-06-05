@@ -24,8 +24,8 @@ public class Account {
         if(currency.equalsIgnoreCase("usd")){
             //to get accurate exchange rate of 1euro = 1.6' dollars {30eu = 50usd}
             this.balance = this.balance * 1.66666666666666666;
-        }else if(currency.equalsIgnoreCase("eur")){
-              this.balance =+ 0;
+        }else if(currency.equalsIgnoreCase("EUR")){
+              return this.balance ;
         }
         return this.balance;
 
@@ -33,9 +33,9 @@ public class Account {
 
     public void addFunds(double topUpAmount, PaymentService paymentService) {
         //check if payment method is blacklisted
-        if(!blacklistedPaymentServices.contains(paymentService.getType())){
-            this.balance += topUpAmount;  //dont add anything to balance
-        }else{ this.balance += 0; } //add balance to new balance
+        if(blacklistedPaymentServices.contains(paymentService.getType())){
+            this.balance = this.balance+0;
+        }else{this.balance += topUpAmount; }
     }
 
 }

@@ -25,7 +25,7 @@ public class Person {
     }
 
     public double getAccountBalance(String eur) {
-        return userAccounts.get("EUR").getBalance("eur");
+        return userAccounts.get("EUR").getBalance(eur);
     }
 
     public Account getAccount(String account) {
