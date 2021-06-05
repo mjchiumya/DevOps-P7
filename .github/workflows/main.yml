@@ -30,6 +30,7 @@ jobs:
          distribution: 'adopt'      
      - name : make gradle executble
        run: chmod +x ./gradlew
-     - name: Run the Gradle package task
-       run: ./gradlew -b ci.gradle package
+     - name: Unit tests
+       run: bash ./gradlew test --stacktrace
+  
   
