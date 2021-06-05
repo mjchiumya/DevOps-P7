@@ -19,3 +19,17 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew build
+        
+  test:
+    runs-on: ubuntu-latest    
+    steps:
+     - uses: actions/checkout@v2
+     - uses: actions/setup-java@v2
+       with:
+         java-version: '11'
+         distribution: 'adopt'      
+     - name : make gradle executble
+       run: chmod +x ./gradlew
+     - name: Run the Gradle package task
+       run: ./gradlew -b ci.gradle package
+  
