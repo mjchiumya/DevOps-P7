@@ -21,9 +21,9 @@ public class Account {
     }
 
     public double getBalance(String currency) {
-        if(currency.equalsIgnoreCase("usd")){
-            //to get accurate exchange rate of 1euro = 1.6' dollars {30eu = 50usd}
-            this.balance = this.balance * 1.66666666666666666;
+        if(currency.equalsIgnoreCase("USD")){
+            //to get accurate exchange rate of 1euro = 1.5' dollars
+            this.balance *=(1.5);
         }else if(currency.equalsIgnoreCase("EUR")){
               return this.balance ;
         }
